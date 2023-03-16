@@ -1,5 +1,5 @@
 :root {
-  --animation-height: 40vh;
+  --animation-height: 400px;
   --animation-display: flex;
   --body-background-color: #fed8b1;
   --item-background-color: #f47174;
@@ -7,6 +7,10 @@
 
 body {
   background-color: var(--body-background-color);
+}
+
+p {
+  margin: 0;
 }
 
 .bayan-wrapper {
@@ -23,13 +27,28 @@ body {
   border-radius: 30px;
 }
 
-.bayan-item-title {
-  display: block;
+.bayan-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.bayan-body-title {
   padding: 3%;
+  display: flex;
+  justify-content: space-between;
+
   cursor: pointer;
   border-radius: 30px 30px 0px 0px;
 
   transition: background 0.2s ease-in-out;
+}
+
+.bayan-body-title > .fa-check {
+  display: none;
+}
+
+.bayan-body-title > .fa-arrow-down {
+  display: block;
 }
 
 .bayan-input {
@@ -49,23 +68,51 @@ body {
 
 .mem-image {
   height: 100%;
+  border-radius: 0 0 20px 20px;
   cursor: pointer;
 }
 
-.bayan-item-title:hover {
+/* on: hover effect */
+.bayan-body-title:hover {
   background-color: var(--item-background-color);
 }
 
-.bayan-input:checked ~ .bayan-item-title {
-  background-color: var(--item-background-color);
+.bayan-input:hover ~ .bayan-body > .bayan-body-title > .fa-check {
+  display: block;
 }
 
-.bayan-item:hover > .bayan-mem-wrapper {
+.bayan-input:hover ~ .bayan-body > .bayan-body-title > .fa-arrow-down {
+  display: none;
+}
+
+.bayan-item:hover ~ .bayan-body > .bayan-mem-wrapper {
   display: var(--animation-display);
   height: var(--animation-height);
 }
 
-.bayan-input:hover ~ .bayan-mem-wrapper {
+.bayan-input:hover ~ .bayan-body > .bayan-mem-wrapper {
+  display: var(--animation-display);
+  height: var(--animation-height);
+
+  animation-name: animateHeight;
+  animation-duration: 0.5s;
+}
+/* off: hover effect */
+
+/* on: checked effect */
+.bayan-input:checked ~ .bayan-body > .bayan-body-title {
+  background-color: var(--item-background-color);
+}
+
+.bayan-input:checked ~ .bayan-body > .bayan-body-title > .fa-check {
+  display: block;
+}
+
+.bayan-input:checked ~ .bayan-body > .bayan-body-title > .fa-arrow-down {
+  display: none;
+}
+
+.bayan-input:checked ~ .bayan-body > .bayan-mem-wrapper {
   display: var(--animation-display);
   height: var(--animation-height);
 
@@ -73,13 +120,14 @@ body {
   animation-duration: 0.5s;
 }
 
-.bayan-input:checked ~ .bayan-mem-wrapper {
+.bayan-input:checked > .mem-image {
   display: var(--animation-display);
   height: var(--animation-height);
 
   animation-name: animateHeight;
   animation-duration: 0.5s;
 }
+/* off: checked effect */
 
 @keyframes animateHeight {
   0% {
