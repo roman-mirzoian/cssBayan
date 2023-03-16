@@ -1,0 +1,46 @@
+.bayan-wrapper {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.bayan-item {
+  margin-bottom: 5px;
+  max-width: 500px;
+  border: 1px solid red;
+}
+
+.bayan-item-title {
+  display: block;
+  padding: 10px 15px;
+  cursor: pointer;
+
+  transition: background 0.2s ease-in-out;
+}
+
+.bayan-item-title:hover {
+  background-color: red;
+}
+
+.bayan-input {
+  width: 0;
+  height: 0;
+  appearance: none;
+  position: absolute;
+}
+
+.bayan-input:checked ~ .bayan-item-title {
+  background-color: red;
+}
+
+.bayan-input:checked ~ .bayan-mem {
+  display: block;
+}
+
+.bayan-mem {
+  display: none;
+  padding: 10px 15px;
+}
+
+.mem-image {
+  width: 100%;
+}
